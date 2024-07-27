@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Name Glow Effect</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black; /* Background color */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="200"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Function to draw glowing text
+        function drawGlowingText(text, x, y) {
+            ctx.font = '70px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Create the blue glow effect
+            ctx.shadowColor = 'blue';
+            ctx.shadowBlur = 20;
+            ctx.fillStyle = 'blue';
+            ctx.fillText(text, x, y);
+
+            // Create the pink glow effect
+            ctx.shadowColor = 'pink';
+            ctx.shadowBlur = 40;
+            ctx.fillStyle = 'pink';
+            ctx.fillText(text, x, y);
+
+            // Draw the text without glow in white for contrast
+            ctx.shadowBlur = 0; // Reset shadow
+            ctx.fillStyle = 'white';
+            ctx.fillText(text, x, y);
+        }
+
+        drawGlowingText('Arehone Matodzi', canvas.width / 2, canvas.height / 2);
+    </script>
+</body>
+</html>
